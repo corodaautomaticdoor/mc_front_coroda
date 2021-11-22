@@ -1,0 +1,21 @@
+{
+    "name": "front-tesis-mock-backend",
+    "version": "1.0.0",
+    "description": "Servidor para emular peticiones de back",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "author": "Harold Portillo",
+    "license": "MIT",
+    "dependencies": {
+        "commander": "^4.1.0",
+        "cors": "2.8.5",
+        "json-server": "^0.15.1",
+        "lodash": "^4.17.15",
+        "request-promise": "^4.2.5",
+        "underscore": "^1.9.2",
+        "uuid": "^3.4.0"
+    }
+}

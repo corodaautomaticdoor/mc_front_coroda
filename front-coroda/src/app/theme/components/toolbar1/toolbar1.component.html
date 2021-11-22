@@ -1,0 +1,95 @@
+<!-- <mat-toolbar id="top-toolbar" class="top-toolbar">
+  <div class="theme-container" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="start center"> 
+      <app-contacts fxLayout="row" fxLayoutAlign="start center"></app-contacts>         
+    </div>
+    <app-social-icons fxLayout="row" fxLayoutAlign="start center" fxShow="false" fxShow.gt-md></app-social-icons>
+    <div fxLayout="row" fxLayoutAlign="end center" class=""> 
+      <app-lang></app-lang>
+      <app-user-menu></app-user-menu>
+    </div>    
+  </div>           
+</mat-toolbar>   -->
+<mat-toolbar id="main-toolbar" class="mat-elevation-z2"> 
+  <div class="theme-container" fxLayout="row" fxLayoutAlign="space-between center">
+    <span fxHide="false" fxHide.gt-sm>
+      <button mat-icon-button (click)="sidenavToggle()">
+        <mat-icon class="mat-icon-lg">menu</mat-icon>
+      </button> 
+    </span>
+    <img src="assets/images/others/logo_blanco.png" class="img-logo"/>
+    <a class="logo" routerLink="/" ></a> 
+    <div fxShow="false" fxShow.gt-sm class="horizontal-menu">            
+        <app-horizontal-menu [menuParentId]="0"></app-horizontal-menu>
+    </div> 
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <!-- <button (click)="reservation()" mat-icon-button [matTooltip]="'RESERVATION' | translate" fxShow="false" fxShow.gt-xs="true">
+        <mat-icon>book_online</mat-icon>
+      </button>  -->
+      <button *ngIf="isLogging" (click)="openCart()" mat-icon-button matTooltip="Solicitud">
+        <mat-icon [matBadge]="appService.Data.totalCartCount" 
+                  [matBadgeHidden]="appService.Data.totalCartCount == 0" 
+                  matBadgeSize="small" 
+                  matBadgeColor="warn">receipt_long</mat-icon>
+      </button>  
+       <a *ngIf="isLogging" [matMenuTriggerFor]="userMenu" #userMenuTrigger="matMenuTrigger" mat-icon-button matTooltip="Cuenta" class="mx-2"  fxShow="false" fxShow.gt-xs="true">
+          <mat-icon>person</mat-icon>
+          <mat-icon>arrow_drop_down</mat-icon>
+            <mat-menu #userMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-menu-panel user-menu">
+                <span (mouseleave)="userMenuTrigger.closeMenu()">
+                    <div fxLayout="row" fxLayoutAlign="start center" class="user-info">                   
+                        <img src="assets/images/others/user.jpg" alt="user-image" width="50">
+                        <p class="m-0">Emilio Verdines <br> <small><i>emilio_v</i></small></p>
+                    </div>
+                    <div class="divider"></div>
+                    <a mat-menu-item routerLink="/account/dashboard"> 
+                        <mat-icon class="mat-icon-sm">settings</mat-icon>
+                        <span>Account Settings</span> 
+                    </a>
+                    <!-- <a mat-menu-item routerLink="/account/my-properties"> 
+                        <mat-icon class="mat-icon-sm">home</mat-icon>
+                        <span>My Properties</span> 
+                    </a> -->
+                    <a mat-menu-item routerLink="/account/favorites"> 
+                        <mat-icon class="mat-icon-sm">favorite_border</mat-icon>
+                        <span [matBadge]="appService.Data.favorites.length" 
+                              [matBadgeHidden]="appService.Data.favorites.length == 0"
+                              matBadgeSize="small" 
+                              matBadgeColor="warn" 
+                              matBadgeOverlap="false">Favorites</span> 
+                    </a>
+                    <!-- <a mat-menu-item routerLink="/compare"> 
+                        <mat-icon class="mat-icon-sm">compare_arrows</mat-icon> 
+                        <span [matBadge]="appService.Data.compareList.length" 
+                              [matBadgeHidden]="appService.Data.compareList.length == 0"
+                              matBadgeSize="small" 
+                              matBadgeColor="warn" 
+                              matBadgeOverlap="false">Compare</span> 
+                    </a> -->
+                    <!-- <a mat-menu-item routerLink="/"> 
+                        <mat-icon class="mat-icon-sm">search</mat-icon>
+                        <span>Saved Searches</span> 
+                    </a> -->
+                    <a mat-menu-item routerLink="/account/profile"> 
+                        <mat-icon class="mat-icon-sm">edit</mat-icon>
+                        <span>Edit Profile</span> 
+                    </a>
+                    <a mat-menu-item routerLink="/lock-screen"> 
+                        <mat-icon class="mat-icon-sm">lock</mat-icon>
+                        <span>Lock screen</span> 
+                    </a>
+                    <a mat-menu-item routerLink="/faq"> 
+                        <mat-icon class="mat-icon-sm">help</mat-icon>
+                        <span>Help</span> 
+                    </a>
+                    <div class="divider"></div>
+                    <a mat-menu-item (click)="logout()"> 
+                        <mat-icon class="mat-icon-sm">power_settings_new</mat-icon>
+                        <span>Sign Out</span> 
+                    </a>
+                </span>
+            </mat-menu>  
+      </a> 
+    </div>   
+  </div>     
+</mat-toolbar>

@@ -1,0 +1,125 @@
+<app-header-image [backgroundImage]="'assets/images/others/banner_nosotros_2.png'" 
+                  [bgImageAnimate]="true" 
+                  [contentOffsetToTop]="true"  
+                  [title]="'Acerca de nosotros'"
+                  [desc]="'Queremos que confies en nosotros, por eso te mostraremos quienes somos.'">
+</app-header-image>  
+
+<div class="px-3">
+    <div class="theme-container">
+        <mat-card class="main-content-header"> 
+            <div class="section pt-1 px-3"> 
+                <h1 class="section-title">Quienes somos</h1> 
+                <p>Somos una empresa peruana  que brindamos servicios de de venta en instalaciones de motores  , electrónicos y automáticos  para todo tipo de puertas  de garajes (  seccionales , levadizas ,contrapesos  , corredizas  y batientes ) esta empresa nace con la finalidad de contribuir  con el desarrollo y crecimiento acelerado del mercado peruano </p>
+                  
+                <div fxLayout="row wrap"> 
+                    <div fxFlex="100" fxFlex.gt-sm="50" class="py-3"> 
+                        <img src="assets/images/others/nuestros_servicios.jpeg" alt="about-1" class="mw-100">
+                    </div> 
+                    <div fxFlex="100" fxFlex.gt-sm="50" class="py-3" [ngClass.gt-sm]="(settings.rtl) ? 'pr-5' : 'pl-5'"> 
+                        <h1 class="secondary-font primary-color text-center">Nuestro Servicios</h1>
+                        <p>Brindando a nuestros  clientes  servicios como  instalación , mantenimientos  ,preventivos  y reparaciones  tales como  la colocación  y puesto en funcionamiento  de un sistema de aperturas  y cierre de puertas  de acceso  ya sea en el componente manual  automatización  con sierre de puertas automáticas  ,todo a control remoto </p>
+                        <div class="title-div">Reparación de puertas de garajes:</div>
+                        <div style="padding-left: 15px;">
+                            <ul>
+                                <li> Consiste en lubricación   todas las bisagras y rondanas </li>
+                                <li> Equilibrar y ajustar la alineación de puerta de garajes  para su correcto funcionamiento  </li>
+                                <li> Inspeccionar   y  ajustar todo los pernos    </li>
+                                <li> Afinar el abrepuertas, verificar todas las cadenas y las piezas móviles    </li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div> 
+
+                <div fxLayout="row wrap" class="mt-3">  
+                    <div fxFlex="100" fxFlex.gt-sm="50" class="py-3" [ngClass.gt-sm]="(settings.rtl) ? 'pl-5' : 'pr-5'"> 
+                        <p>CUANDO LOS RESORTES SE ROMPEN o a veces de desgasta con el transcurso del año  no se sienta preocupado en coroda automatic door  solo confié  en piezas de mas alta calidad 
+                            Contamos con resortes de todo tipo para diferentes medidas  y pesos de puertas  adecuadas para el correcto funcionamiento de la puerta .
+                        </p>
+                        <div class="title-div">Remplazo de resortes :</div>
+                        <div style="padding-left: 15px;">
+                            <ul>
+                                <li> Resorte  de torsión de  50kilos </li>
+                                <li> Resorte de torsión  de 70 kilos  </li>
+                                <li> Resorte   de torcion  de 90 kilos     </li>
+                                <li> Resortes del alto transito de   100 y 120 kilos       </li>
+                            </ul>
+                        </div>
+                    </div> 
+                    <div fxFlex="100" fxFlex.gt-sm="50" class="py-3"> 
+                        <img src="assets/images/others/banner_contact.jpeg" alt="about-2" class="mw-100">
+                    </div> 
+                </div> 
+
+                <div fxLayout="row wrap"> 
+                    <div fxFlex="100" fxFlex.gt-sm="50" class="py-3"> 
+                        <img src="assets/images/others/nosotros_3.jpeg" alt="about-1" class="mw-100">
+                    </div> 
+                    <div fxFlex="100" fxFlex.gt-sm="50" class="py-3" [ngClass.gt-sm]="(settings.rtl) ? 'pr-5' : 'pl-5'"> 
+                        <div class="title-div">Instalación de todo tipos de puertas :</div>
+                        <div style="padding-left: 15px;">
+                            <ul>
+                                <li> Puertas Levadizas </li>
+                                <li> Puertas Seccionales  </li>
+                                <li> Puertas Corredizas    </li>
+                                <li> Puertas Basculares    </li>
+                                <li> Puertas de Contrapeso    </li>
+                                <li> Puertas interiores    </li>
+                                <li> Estructuras metálicas     </li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div> 
+    
+                <!-- <div fxLayout="row wrap" class="flex-wrapper mt-5"> 
+                    <div fxFlex="100" class="px-3">
+                        <h2 class="secondary-font primary-color">Accommodation Details</h2> 
+                        <p>Aenean eu ex vitae orci posuere luctus. Phasellus dui tortor, sagittis molestie mi at, malesuada porttitor dui. Praesent scelerisque, turpis ac venenatis faucibus, turpis urna hendrerit tortor, non lobortis orci velit id justo. Phasellus nec enim purus. Sed ultricies dapibus nisi, ac iaculis diam viverra ut.</p>
+                    </div>  
+                    <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-3"> 
+                        <mat-card class="p-0 o-hidden" fxLayout="row wrap"> 
+                            <div fxFlex="50" fxLayoutAlign="center center"><h3 class="secondary-font p-2 text-center">2 Person Seating</h3></div>
+                            <div fxFlex="50" fxLayoutAlign="center center" class="bg-primary py-4"><h1>48</h1></div>
+                        </mat-card> 
+                    </div> 
+                    <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-3"> 
+                        <mat-card class="p-0 o-hidden" fxLayout="row wrap"> 
+                            <div fxFlex="50" fxLayoutAlign="center center"><h3 class="secondary-font p-2 text-center">4 Person Seating</h3></div>
+                            <div fxFlex="50" fxLayoutAlign="center center" class="bg-primary py-4"><h1>36</h1></div>
+                        </mat-card> 
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-3"> 
+                        <mat-card class="p-0 o-hidden" fxLayout="row wrap"> 
+                            <div fxFlex="50" fxLayoutAlign="center center"><h3 class="secondary-font p-2 text-center">6 Person Seating</h3></div>
+                            <div fxFlex="50" fxLayoutAlign="center center" class="bg-primary py-4"><h1>24</h1></div>
+                        </mat-card> 
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-3"> 
+                        <mat-card class="p-0 o-hidden" fxLayout="row wrap"> 
+                            <div fxFlex="50" fxLayoutAlign="center center"><h3 class="secondary-font p-2 text-center">Family Seating <small>(max 20)</small></h3></div>
+                            <div fxFlex="50" fxLayoutAlign="center center" class="bg-primary py-4"><h1>15</h1></div>
+                        </mat-card> 
+                    </div>
+                    <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-sm="25" fxFlex.sm="50" class="p-3"> 
+                        <mat-card class="p-0 o-hidden" fxLayout="row wrap"> 
+                            <div fxFlex="50" fxLayoutAlign="center center"><h3 class="secondary-font p-2 text-center">Business Meet</h3></div>
+                            <div fxFlex="50" fxLayoutAlign="center center" class="bg-primary py-4"><h1>7</h1></div>
+                        </mat-card> 
+                    </div> 
+                </div>
+                <div fxLayout="row wrap" class="flex-wrapper mt-3"> 
+                    <div fxFlex="100" fxFlex.gt-sm="50" class="p-3">                             
+                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper lobortis quam, id imperdiet mi feugiat quis. Cras a odio posuere, rhoncus quam vitae, commodo neque. Nunc mollis velit vulputate, volutpat diam vitae, egestas turpis. In posuere tempor lorem, sit amet pulvinar nunc accumsan a. Quisque sem tellus, congue at eleifend sit amet, consectetur sit amet est. Integer sodales quam quis elit commodo consequat. Aenean posuere augue a justo gravida elementum laoreet tincidunt enim. Nullam sagittis mauris id dui scelerisque, eget dignissim est hendrerit. Praesent fringilla commodo egestas. Suspendisse bibendum purus vitae mi mattis laoreet.</p>
+                    </div> 
+                    <div fxFlex="100" fxFlex.gt-sm="50" class="p-3">  
+                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper lobortis quam, id imperdiet mi feugiat quis. Cras a odio posuere, rhoncus quam vitae, commodo neque. Nunc mollis velit vulputate, volutpat diam vitae, egestas turpis. In posuere tempor lorem, sit amet pulvinar nunc accumsan a. Quisque sem tellus, congue at eleifend sit amet, consectetur sit amet est. Integer sodales quam quis elit commodo consequat. Aenean posuere augue a justo gravida elementum laoreet tincidunt enim. Nullam sagittis mauris id dui scelerisque, eget dignissim est hendrerit. Praesent fringilla commodo egestas. Suspendisse bibendum purus vitae mi mattis laoreet.</p>
+                    </div> 
+                </div>  -->
+            </div>  
+        </mat-card>  
+    </div> 
+</div>    
+<!-- 
+<app-our-services></app-our-services> 
+<app-our-awards></app-our-awards>  
+<app-get-app></app-get-app> -->

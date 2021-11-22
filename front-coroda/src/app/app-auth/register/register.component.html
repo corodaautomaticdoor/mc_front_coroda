@@ -1,0 +1,100 @@
+<div class="register">
+    <div class="theme-container">  
+        <mat-card class="p-0 o-hidden">
+            <div fxLayout="row wrap" style="height: 100vh;"> 
+                <div fxFlex="100" fxFlex.gt-sm="50" class="p-0" [style.background-image]="bgImage" class="bg-cover"> 
+                </div> 
+                <div fxFlex="100" fxFlex.gt-sm="50" class="py-3" ngClass.gt-sm="px-5" ngClass.sm="px-3" ngClass.xs="px-3">  
+                    <div fxLayout="column" fxLayoutAlign="center center" class="text-center">  
+                        <h1 class="secondary-font">Register</h1>  
+                        <a mat-button routerLink="/login" color="accent" class="w-100">Ya tienes una cuenta? Logueate!</a>  
+                    </div>
+                    <div style="height: 80vh;overflow-y: auto;">
+                        <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit()">  
+                            <mat-form-field   appearance="outline" class="w-100 mt-2">
+                                <mat-label>Tipo de Documento</mat-label>
+                                <mat-select (selectionChange)="tipoDocumentoChange($event)" formControlName="typeDocument">
+                                  <mat-option *ngFor="let typeDocument of typeDocuments" [value]="typeDocument.value">
+                                    {{typeDocument.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="registerForm.controls.typeDocument.errors?.required">Tipo de documento es obligatorio</mat-error>
+                              </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-2">
+                                <mat-label>Numero de Documento</mat-label>
+                                <input matInput placeholder="Numero Documento" formControlName="numeroDocumento" required>
+                                <mat-error *ngIf="registerForm.controls.numeroDocumento.errors?.required">Numero de documento es obligatorio</mat-error>
+                                <mat-error *ngIf="registerForm.controls.numeroDocumento.hasError('minlength')">Debe contener como minimo 6 caracteres</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-2" *ngIf="this.registerForm.controls['typeDocument'].value !== '1'">
+                                <mat-label>Nombre</mat-label>
+                                <input matInput placeholder="Nombre" formControlName="nombre" required>
+                                <mat-error *ngIf="registerForm.controls.nombre.errors?.required">Nombre es obligatorio</mat-error>
+                                <mat-error *ngIf="registerForm.controls.nombre.hasError('minlength')">Debe contener como minimo 6 caracteres</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-2" *ngIf="this.registerForm.controls['typeDocument'].value !== '1'">
+                                <mat-label>Apellido Paterno</mat-label>
+                                <input matInput placeholder="Apellido Paterno" formControlName="appPaterno" required>
+                                <mat-error *ngIf="registerForm.controls.appPaterno.errors?.required">Apellido Paterno es obligatorio</mat-error>
+                                <mat-error *ngIf="registerForm.controls.appPaterno.hasError('minlength')">Debe contener como minimo 6 caracteres</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-2" *ngIf="this.registerForm.controls['typeDocument'].value !== '1'">
+                                <mat-label>Apellido Materno</mat-label>
+                                <input matInput placeholder="Apellido Materno" formControlName="appMaterno" required>
+                                <mat-error *ngIf="registerForm.controls.appMaterno.errors?.required">Apellido Materno es obligatorio</mat-error>
+                                <mat-error *ngIf="registerForm.controls.appMaterno.hasError('minlength')">Debe contener como minimo 6 caracteres</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-2" *ngIf="this.registerForm.controls['typeDocument'].value == '1'">
+                                <mat-label>Razon Social</mat-label>
+                                <input matInput placeholder="Razon Social" formControlName="razonSocial" required>
+                                <mat-error *ngIf="registerForm.controls.razonSocial.errors?.required">Razon social es obligatorio</mat-error>
+                                <mat-error *ngIf="registerForm.controls.razonSocial.hasError('minlength')">Debe contener como minimo 6 caracteres</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-2">
+                                <mat-label>Direccion</mat-label>
+                                <input matInput placeholder="Direccion" formControlName="direccion" required>
+                                <mat-error *ngIf="registerForm.controls.direccion.errors?.required">Direccion es obligatorio</mat-error>
+                                <mat-error *ngIf="registerForm.controls.direccion.hasError('minlength')">Debe contener como minimo 6 caracteres</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-2">
+                                <mat-label>Celular</mat-label>
+                                <input matInput placeholder="Celular" formControlName="celular" required>
+                                <mat-error *ngIf="registerForm.controls.celular.errors?.required">Celular es obligatorio</mat-error>
+                                <mat-error *ngIf="registerForm.controls.celular.hasError('minlength')">Debe contener como minimo 6 caracteres</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-1">
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="Email" formControlName="email" required>
+                                <mat-error *ngIf="registerForm.controls.email.errors?.required">Email es obligatorio</mat-error>
+                                <mat-error *ngIf="registerForm.controls.email.hasError('invalidEmail')">Email no valido</mat-error>
+                            </mat-form-field>
+                            <mat-form-field  appearance="outline" class="w-100 mt-1">
+                                <mat-label>Password</mat-label>
+                                <input matInput placeholder="Password" formControlName="password" type="password" minlength="6" required [type]="hide ? 'password' : 'text'">
+                                <mat-error *ngIf="registerForm.controls.password.errors?.required">Contraseña es requerida</mat-error>
+                                <mat-error *ngIf="registerForm.controls.password.hasError('minlength')">Debe contener como minimo 6 caracteres</mat-error>
+                                <button mat-icon-button matSuffix (click)="hide = !hide" type="button" class="text-muted">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field> 
+                            <mat-form-field  appearance="outline" class="w-100 mt-1">
+                                <mat-label>Confirmar Contraseña</mat-label>
+                                <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required [type]="hide ? 'password' : 'text'">
+                                <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">Confirmacion de contraseña es requerida </mat-error>
+                                <mat-error *ngIf="registerForm.controls.confirmPassword.hasError('mismatchedPasswords')">Las contraseñas no son equivalentes</mat-error>
+                                <button mat-icon-button matSuffix (click)="hide = !hide" type="button" class="text-muted">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field> 
+                            <div class="text-center mt-2"> 
+                                <button mat-raised-button color="accent" class="uppercase" type="submit">
+                                    Crear cuenta
+                                </button>
+                            </div> 
+                        </form>
+                    </div>
+                </div> 
+            </div> 
+        </mat-card>
+    </div>
+</div>   
