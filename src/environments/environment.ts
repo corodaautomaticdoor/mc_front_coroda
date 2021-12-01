@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   url: '',
-  API_URL: 'https://cad-mc-login.herokuapp.com/',
-  API_PRODUCTO_URL: 'http://localhost:3001/'
+  API_PRODUCTO_URL: 'https://cad-mc-product.herokuapp.com/',
+  API_LOGIN_URL: 'https://cad-mc-login.herokuapp.com/',
+  API_OPERATION_URL: 'https://cad-mc-operation.herokuapp.com/'
 };
 
 /*
