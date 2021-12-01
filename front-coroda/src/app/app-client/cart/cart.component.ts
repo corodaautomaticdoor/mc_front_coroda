@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MenuItem } from 'src/app/app.models';
 import { AppService } from 'src/app/app.service';
+import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,8 @@ export class CartComponent implements OnInit {
   public cartItemCountTotal:number = 0; 
   public currentTotalCartCount:number = 0;
   
-  constructor(public appService:AppService, public snackBar: MatSnackBar, private router:Router) { }
+  constructor(public appService:AppService, public snackBar: MatSnackBar, private router:Router,
+              private cartService: CartService) { }
 
   ngOnInit(): void {  
     this.updateCartTotal(); 
@@ -78,8 +80,10 @@ export class CartComponent implements OnInit {
   }
 
   cotizar() {
-    this.clear();
-    this.router.navigate(['/client/checkout']);
+    this.cartService.cotizar(this.appService.Data.cartList).toPromise().then(s=>{
+      this.clear();
+      this.router.navigate(['/cart']);
+    });
   }
 
   public remove(item:MenuItem) {

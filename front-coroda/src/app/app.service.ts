@@ -201,9 +201,10 @@ export class AppService {
     return value; 
   } 
 
-  public filterData(data:any, categoryId:number, sort?:string, page?:number, perPage?:number){  
-    if(categoryId){
-      data = data.filter((item:any) => item.categoryId == categoryId);
+  public filterData(data:any, categoryId:number, categoryName:string | null, sort?:string, page?:number, perPage?:number){  
+    debugger
+    if(categoryName){
+      data = data.filter((item:any) => item.categoria == categoryName);
     }   
 
     //for show more properties mock data 

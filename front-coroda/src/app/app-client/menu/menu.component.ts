@@ -29,6 +29,7 @@ export class MenuComponent implements OnInit {
   public count: number = 12;
   public sort: string = '';
   public selectedCategoryId:number = 0;
+  public selectedCategoryName:string | null = null;
   public pagination:Pagination = new Pagination(1, this.count, null, 2, 0, 0); 
   public message:string | null = '';
   public watcher: Subscription;
@@ -80,19 +81,25 @@ export class MenuComponent implements OnInit {
       this.appService.Data.categories = categories;
     })
   } 
-  public selectCategory(id:number){
+  public selectCategory(id:number, name: string){
     this.selectedCategoryId = id;
+    this.selectedCategoryName = name;
     this.menuItems.length = 0;
     this.resetPagination();
     this.getMenuItems();
     this.sidenav.close();
   }
   public onChangeCategory(event:any){ 
-    this.selectCategory(event.value);
+    this.selectCategory(0, event.value);
   }
 
   public getMenuItems(){
-    this.menuService.getProductos().subscribe(data => {
+    let products;
+    if(!this.selectedCategoryName)
+      products = this.menuService.getProductos();
+    else
+      products = this.menuService.getProductosPorCategoria(this.selectedCategoryName);
+    products.subscribe(data => {
       // this.menuItems = this.appService.shuffleArray(data);
       // this.menuItems = data;
       let result = this.filterData(data); 
@@ -117,7 +124,7 @@ export class MenuComponent implements OnInit {
   }
 
   public filterData(data:any){
-    return this.appService.filterData(data, this.selectedCategoryId, this.sort, this.pagination.page, this.pagination.perPage);
+    return this.appService.filterData(data, this.selectedCategoryId, this.selectedCategoryName, this.sort, this.pagination.page, this.pagination.perPage);
   }
   // public filterData(data){
   //   return this.appService.filterData(data, this.searchFields, this.sort, this.pagination.page, this.pagination.perPage);

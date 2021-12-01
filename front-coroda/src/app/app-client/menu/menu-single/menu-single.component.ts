@@ -21,7 +21,10 @@ export class MenuSingleComponent implements OnInit {
   public buttonEdit: boolean = false;
   public buttonIcon: string = 'edit';
   public buttonToolTip: string = 'Editar';
-  public formulario!: FormGroup;
+  public formulario: FormGroup= new FormGroup({
+    nuevoColor: new FormControl(''),
+    nuevaDescripcion: new FormControl('')
+  });
 
   constructor(public appSettings:AppSettings, 
               public appService:AppService, 
@@ -71,12 +74,13 @@ export class MenuSingleComponent implements OnInit {
   } 
 
   public addToCart(){ 
+    debugger
     this.menuItem.cartCount = this.quantityCount;
     // if(this.menuItem.cartCount <= this.menuItem.availibilityCount){
     const index: number = this.appService.Data.cartList.findIndex(item => item.id == this.menuItem.id); 
     if(this.buttonEdit){
-      this.menuItem.nuevoColor = this.formulario.get('nuevoColor')?.value;
-      this.menuItem.nuevasDescripciones = this.formulario.get('nuevaDescripcion')?.value;
+      this.menuItem.nuevoColor = this.formulario.controls['nuevoColor'].value;
+      this.menuItem.nuevasDescripciones = this.formulario.controls['nuevaDescripcion'].value;
     } else {
       this.menuItem.nuevoColor = '';
       this.menuItem.nuevasDescripciones = '';

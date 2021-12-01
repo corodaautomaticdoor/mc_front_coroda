@@ -36,16 +36,16 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.controls['username'].value,
       password: this.loginForm.controls['password'].value
     };
-    debugger
     const returnUrl = localStorage.getItem('temp_route');
     const redirectUrl = returnUrl != null ? returnUrl : '/';
     if (this.loginForm.valid) {
       this.loginService.login(request).subscribe(s=>{
+        console.log(s)
         saveToken(JSON.stringify(s));
-        if(s.rolId == "1"){
+        if(s.rol == "Cliente"){
           this.router.navigate([redirectUrl]);
         }
-        if(s.rolId == "2"){
+        if(s.rol == "Admin"){
           this.router.navigate(['/admin']);
         }
       },

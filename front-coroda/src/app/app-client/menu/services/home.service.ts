@@ -44,7 +44,36 @@ export class MenuService extends BaseService {
           let image = new MenuItemImage(s.image,s.image,s.image);
           let producto = new MenuItem(s.id,s.brand,s.description,s.priceUnit, image, 0,0,0,0,s.category,s.subCategory,s.model,s.material,s.dimensions,s.color,0,0,false,categoryId);
           productoItems.push(producto);
-          console.log(producto)
+        });
+        return productoItems;
+      })
+    )
+  }
+
+  getProductosPorCategoria(category: string | null): Observable<MenuItem[]> {
+    debugger
+    return this.http.post<ProductoPaginatorModel[]>(`${PRODUCTO_URL}` + category,null).pipe(
+      map(resp=>{
+        let productoItems: MenuItem[] = [];
+        resp.forEach(s=>{
+          let categoryId = 0;
+          switch (s.category) {
+            case CategoriaEnum.puerta:
+              categoryId = 1;
+              break;
+            case CategoriaEnum.controles:
+              categoryId = 2;
+              break;  
+            case CategoriaEnum.motores:
+              categoryId = 3;
+              break;
+            default:
+              categoryId = 0;
+              break;
+          }
+          let image = new MenuItemImage(s.image,s.image,s.image);
+          let producto = new MenuItem(s.id,s.brand,s.description,s.priceUnit, image, 0,0,0,0,s.category,s.subCategory,s.model,s.material,s.dimensions,s.color,0,0,false,categoryId);
+          productoItems.push(producto);
         });
         return productoItems;
       })

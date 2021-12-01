@@ -1,5 +1,6 @@
 [
     { "id":1, "name":"Puertas", "description": "Puertas category description" },
     { "id":2, "name":"Controles", "description": "Controles category description" },
-    { "id":3, "name":"Motores", "description": "Motores category description" }
+    { "id":3, "name":"Motores", "description": "Motores category description" },
+    { "id":4, "name":"Portones", "description": "Portones category description" }
 ]

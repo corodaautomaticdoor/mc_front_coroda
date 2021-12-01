@@ -15,10 +15,10 @@
                     </button>
 
                     <div class="p-3">
-                        <button mat-raised-button color="primary" class="uppercase w-100" (click)="selectCategory(0)">All categories</button>
+                        <button mat-raised-button color="primary" class="uppercase w-100" (click)="selectCategory(0,'')">All categories</button>
                     </div>
                     <div *ngFor="let category of categories" class="p-3">
-                        <button mat-raised-button color="primary" class="uppercase w-100" (click)="selectCategory(category.id)">{{category.name}}</button>
+                        <button mat-raised-button color="primary" class="uppercase w-100" (click)="selectCategory(category.id, category.name)">{{category.name}}</button>
                     </div> 
 
                 </mat-card> 
@@ -31,7 +31,7 @@
                             <mat-button-toggle [value]="0" class="letter">
                                 Todas las categorias
                             </mat-button-toggle>
-                            <mat-button-toggle *ngFor="let category of categories" [value]="category.id" class="letter">
+                            <mat-button-toggle *ngFor="let category of categories" [value]="category.name" class="letter">
                                 {{category.name}}
                             </mat-button-toggle>
                         </mat-button-toggle-group>
