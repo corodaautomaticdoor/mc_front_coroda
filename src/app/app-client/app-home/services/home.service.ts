@@ -33,7 +33,7 @@ export class HomeService extends BaseService {
         headers.append('Access-Control-Allow-Headers', 'Content-Type');
         headers.append('Access-Control-Allow-Methods', 'GET');
         headers.append('Access-Control-Allow-Origin', '*');
-    return this.http.post<ProductoPaginatorModel[]>(`${PRODUCTO_URL}`, {headers}).pipe(
+    return this.http.get<ProductoPaginatorModel[]>(`${PRODUCTO_URL}`).pipe(
       map(resp=>{
         let productoItems: MenuItem[] = [];
         resp.forEach(s=>{

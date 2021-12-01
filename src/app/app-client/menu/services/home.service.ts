@@ -22,7 +22,7 @@ export class MenuService extends BaseService {
   }
 
   getProductos(): Observable<MenuItem[]> {
-    return this.http.post<ProductoPaginatorModel[]>(`${PRODUCTO_URL}`,null).pipe(
+    return this.http.get<ProductoPaginatorModel[]>(`${PRODUCTO_URL}`).pipe(
       map(resp=>{
         let productoItems: MenuItem[] = [];
         resp.forEach(s=>{
@@ -51,8 +51,7 @@ export class MenuService extends BaseService {
   }
 
   getProductosPorCategoria(category: string | null): Observable<MenuItem[]> {
-    debugger
-    return this.http.post<ProductoPaginatorModel[]>(`${PRODUCTO_URL}` + category,null).pipe(
+    return this.http.get<ProductoPaginatorModel[]>(`${PRODUCTO_URL}` + category).pipe(
       map(resp=>{
         let productoItems: MenuItem[] = [];
         resp.forEach(s=>{
