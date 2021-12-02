@@ -7,6 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { RegisterService } from '../shared/service/register.service';
 import { IRegisterRequestModel } from '../shared/models/register/register.request.model';
 import { saveToken } from '../shared/storage/token.storage';
+import { LoginService } from '../shared/service/login.service';
+import { ILoginRequestModel } from '../shared/models/login/login.request.model';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,7 @@ export class RegisterComponent implements OnInit {
   public hide = true; 
   public bgImage:any;
   constructor(public fb: FormBuilder, public router:Router, public snackBar: MatSnackBar, private sanitizer:DomSanitizer,
-              private registerService: RegisterService) { }
+              private registerService: RegisterService, private loginService: LoginService) { }
   typeDocuments: any[] = [
     {value: '0', viewValue: 'DNI'},
     {value: '1', viewValue: 'RUC'},
@@ -84,15 +86,18 @@ export class RegisterComponent implements OnInit {
         email: this.registerForm.controls['email'].value,
         password: this.registerForm.controls['password'].value,
       };
-      this.registerService.register(registerRequest).subscribe(
-        (s) => {
-          saveToken(JSON.stringify(s));
-          this.router.navigate(['/client']);
-        },
-        err =>{
-
-        }
-      );
+      this.registerService.register(registerRequest).toPromise().then(s=>{
+        const request: ILoginRequestModel = {
+          email: registerRequest.email,
+          password: registerRequest.password
+        };
+        this.loginService.createLogin(request).toPromise().then(s=>{
+          this.loginService.login(request).toPromise().then(s=>{
+            saveToken(JSON.stringify(s));
+            this.router.navigate(['/']);
+          });
+        })
+      });
     } else{
       this.snackBar.open('No se completo el registro!', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
     }

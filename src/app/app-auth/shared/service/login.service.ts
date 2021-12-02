@@ -30,4 +30,17 @@ export class LoginService extends BaseService {
   
   }
 
+  createLogin(login: ILoginRequestModel): Observable<any> {
+    const body = {
+      "email": login.email,
+      "password": login.password,
+      "rolId": 1
+    };
+    return this.http.post<ILoginResponseModel>(`${AUTH_URL}`, body).pipe(
+      map(resp=>{
+        return resp;
+      })
+    )
+  
+  }
 }

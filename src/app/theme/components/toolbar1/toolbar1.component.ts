@@ -15,8 +15,12 @@ export class Toolbar1Component implements OnInit {
   constructor(public appService:AppService, private router: Router) { }
 
   isLogging: boolean = getToken() != null;
+  nombreUsuario: string = "";
 
-  ngOnInit() { }
+  ngOnInit() {
+    const ls: any = JSON.parse(localStorage.getItem("OAuthToken")!);
+    this.nombreUsuario = ls.name + ' ' + ls.lastName1;
+  }
 
   public sidenavToggle(){
     this.onMenuIconClick.emit();

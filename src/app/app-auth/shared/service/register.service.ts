@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from 'src/app/shared/services/base.service';
-import { AUTH_URL } from 'src/app/shared/constants/api.url';
+import { PERSON_URL } from 'src/app/shared/constants/api.url';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IRegisterRequestModel } from '../models/register/register.request.model';
@@ -17,10 +17,10 @@ export class RegisterService extends BaseService {
     super();
   }
 
-  register(register: IRegisterRequestModel): Observable<RegisterModel> {
-    return this.http.post<IRegisterResponseModel>(`${AUTH_URL}register`, register).pipe(
+  register(register: IRegisterRequestModel): Observable<any> {
+    return this.http.post<IRegisterResponseModel>(`${PERSON_URL}`, register).pipe(
       map(resp=>{
-        return new RegisterModel(resp);
+        return null;
       })
     )
   }
