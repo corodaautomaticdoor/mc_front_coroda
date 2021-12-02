@@ -40,9 +40,8 @@ export class LoginComponent implements OnInit {
     const redirectUrl = returnUrl != null ? returnUrl : '/';
     if (this.loginForm.valid) {
       this.loginService.login(request).subscribe(s=>{
-        console.log(s)
         saveToken(JSON.stringify(s));
-        if(s.rol == "Cliente"){
+        if(s.rol == "Client"){
           this.router.navigate([redirectUrl]);
         }
         if(s.rol == "Admin"){
