@@ -1,60 +1,50 @@
 <mat-card class="m-2 p-0">
     <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="w-100 p-2">
         <div></div>
-        <button mat-raised-button color="primary" (click)="openCustomerDialog(null)">
-            <mat-icon>add</mat-icon>
-            Add New Customer
-        </button>
     </div>
     <mat-divider></mat-divider>
     <div class="table-wrapper"> 
         <table mat-table [dataSource]="dataSource" matSort class="w-100">
         
             <!-- FullName Column -->
-            <ng-container matColumnDef="fullName">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
-                <td mat-cell *matCellDef="let customer">{{customer.firstName}} {{customer.lastName}} </td>
+            <ng-container matColumnDef="typeOperation">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Operacion </th>
+                <td mat-cell *matCellDef="let customer">{{customer.typeOperation}} </td>
             </ng-container>  
 
             <!-- Username Column -->
-            <ng-container matColumnDef="username">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
-                <td mat-cell *matCellDef="let customer">{{customer.username}} </td>
+            <ng-container matColumnDef="numberDocument">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Numero de documento </th>
+                <td mat-cell *matCellDef="let customer">{{customer.numberDocument}} </td>
             </ng-container> 
     
             <!-- Email Column -->
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-                <td mat-cell *matCellDef="let customer">{{customer.email}}</td>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let customer">{{customer.client.name}} {{customer.client.lastName1}}</td>
             </ng-container>  
             
             <!-- Store Column -->
-            <ng-container matColumnDef="storeId">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Store </th>
-                <td mat-cell *matCellDef="let customer">{{( stores | filterById : customer.storeId )?.name}}</td>
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
+                <td mat-cell *matCellDef="let customer">{{customer.client.phone}}</td>
             </ng-container>   
 
             <!-- Wallet Balance Column -->
-            <ng-container matColumnDef="walletBalance">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Wallet Balance </th>
-                <td mat-cell *matCellDef="let customer">{{customer.walletBalance | currency : 'USD' : 'symbol' : '1.2-2'}}</td>
+            <ng-container matColumnDef="totalAmount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto total </th>
+                <td mat-cell *matCellDef="let customer">{{customer.totalAmount | currency : 'USD' : 'symbol' : '1.2-2'}}</td>
             </ng-container> 
 
-            <!-- Revenue Column -->
-            <ng-container matColumnDef="revenue">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Revenue </th>
-                <td mat-cell *matCellDef="let customer">{{customer.revenue | currency : 'USD' : 'symbol' : '1.2-2'}}</td>
-            </ng-container>  
-    
             <!-- Actions Column -->
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let customer"> 
-                    <button mat-icon-button color="primary" (click)="openCustomerDialog(customer)" matTooltip="Edit">
-                        <mat-icon>edit</mat-icon>
+                    <button mat-icon-button color="primary" (click)="openCustomerDialog(customer)" matTooltip="Ver detalle">
+                        <mat-icon>visibility</mat-icon>
                     </button> 
-                    <button mat-icon-button color="warn" (click)="remove(customer)" matTooltip="Remove">
-                        <mat-icon>delete</mat-icon>
+                    <button mat-icon-button color="warn" (click)="openUpdateCotizacion(customer)" matTooltip="Editar">
+                        <mat-icon>edit</mat-icon>
                     </button>  
                 </td>
             </ng-container> 

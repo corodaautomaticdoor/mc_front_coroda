@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module'; 
 import { CustomersComponent } from './customers.component';
 import { CustomerDialogComponent } from './customer-dialog/customer-dialog.component';
+import { CotizacionService } from './services/cotizacion.service';
+import { CotizacionUpdateComponent } from './cotizacion-update/cotizacion-update.component';
 
 export const routes = [
   { path: '', component: CustomersComponent, pathMatch: 'full' }
@@ -12,12 +14,14 @@ export const routes = [
 @NgModule({
   declarations: [
     CustomersComponent,
-    CustomerDialogComponent
+    CustomerDialogComponent,
+    CotizacionUpdateComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule 
-  ]
+  ],
+  providers: [CotizacionService]
 })
 export class CustomersModule { }

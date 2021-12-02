@@ -38,7 +38,7 @@ export class CustomerDialogComponent implements OnInit {
         address: ['', Validators.required]
       }) 
     }); 
-
+    console.log(this.data)
     if(this.data.customer){
       this.form.patchValue(this.data.customer); 
     };

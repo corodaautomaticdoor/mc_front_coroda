@@ -4,8 +4,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AppService } from 'src/app/app.service';
+import { CotizacionUpdateComponent } from './cotizacion-update/cotizacion-update.component';
 import { CustomerDialogComponent } from './customer-dialog/customer-dialog.component';
 import { customers } from './customers';
+import { CotizacionService } from './services/cotizacion.service';
 
 @Component({
   selector: 'app-customers',
@@ -13,7 +15,7 @@ import { customers } from './customers';
   styleUrls: ['./customers.component.scss']
 })
 export class CustomersComponent implements OnInit {
-  displayedColumns: string[] = ['fullName', 'username', 'email', 'storeId', 'walletBalance', 'revenue', 'actions'];
+  displayedColumns: string[] = ['typeOperation', 'numberDocument', 'name', 'phone', 'totalAmount', 'actions'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
@@ -23,11 +25,13 @@ export class CustomersComponent implements OnInit {
   ]
   public countries:any[] = [];
 
-  constructor(public appService:AppService, public snackBar: MatSnackBar) { }
+  constructor(public appService:AppService, public snackBar: MatSnackBar, private cotizacionService: CotizacionService) { }
 
   ngOnInit(): void { 
     this.countries = this.appService.getCountries();
-    this.initDataSource(customers);  
+    this.cotizacionService.getCotizaciones().subscribe(s=>{
+      this.initDataSource(s); 
+    });
   }
 
   public initDataSource(data:any){
@@ -78,4 +82,16 @@ export class CustomersComponent implements OnInit {
     });  
   }
 
+  public openUpdateCotizacion(customer:any){
+    console.log(customer)
+    let data = {
+      customer: customer,
+      stores: this.stores,
+      countries: this.countries
+    };
+    const dialogRef = this.appService.openDialog(CotizacionUpdateComponent, data, 'theme-dialog');
+    dialogRef.afterClosed().subscribe(cus => {  
+     
+    });  
+  }
 }
