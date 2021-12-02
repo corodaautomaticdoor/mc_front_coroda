@@ -82,7 +82,7 @@ export class CartComponent implements OnInit {
   cotizar() {
     this.cartService.cotizar(this.appService.Data.cartList).toPromise().then(s=>{
       this.clear();
-      this.router.navigate(['/cart']);
+      this.router.navigate(['/checkout']);
     });
   }
 
