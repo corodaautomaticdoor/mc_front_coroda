@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AppService } from 'src/app/app.service';
 import { emailValidator, maxWordsValidator } from 'src/app/theme/utils/app-validators';
+import { ISurvey } from './model/checkout.request.model';
+import { CheckoutService } from './services/checkout.service';
 
 @Component({
   selector: 'app-checkout',
@@ -40,7 +42,8 @@ export class CheckoutComponent implements OnInit {
     pregunta12: new FormControl('')
   });
 
-  constructor(public appService:AppService, private fb: FormBuilder, private router: Router) { }
+  constructor(public appService:AppService, private fb: FormBuilder, private router: Router,
+              private checkoutService: CheckoutService) { }
 
   ngOnInit(): void {
     this.formularioEncuesta =  new FormGroup({
@@ -99,7 +102,22 @@ export class CheckoutComponent implements OnInit {
 
   sendRespuesta() {
     console.log(this.formularioEncuesta.value);
-    this.router.navigate(['/client']);
+    var list: ISurvey[] = [];
+    list.push({numberQuestion: "1",question: "¿Te gustaría guardar todos tus pedidos en alguna cuenta de la empresa?",valor: this.formularioEncuesta.controls['pregunta1'].value})
+    list.push({numberQuestion: "2",question: "¿Te gustan los beneficios que te brinda la cuenta de la empresa?",valor: this.formularioEncuesta.controls['pregunta2'].value})
+    list.push({numberQuestion: "3",question: "¿Crees que son adecuadas las características del producto que brinda la página?",valor: this.formularioEncuesta.controls['pregunta3'].value})
+    list.push({numberQuestion: "4",question: "¿Los productos ofertados en la página son los mismos que la empresa entrega?",valor: this.formularioEncuesta.controls['pregunta4'].value})
+    list.push({numberQuestion: "5",question: "¿Estás de acuerdo con la forma como realizan las cotizaciones?",valor: this.formularioEncuesta.controls['pregunta5'].value})
+    list.push({numberQuestion: "6",question: "¿Las cotizaciones están siendo elaboradas acorde a tus requerimientos?",valor: this.formularioEncuesta.controls['pregunta6'].value})
+    list.push({numberQuestion: "7",question: "¿Te parece adecuado el tiempo que se toman en responder tus pedidos?",valor: this.formularioEncuesta.controls['pregunta7'].value})
+    list.push({numberQuestion: "8",question: "¿Encuentras la información necesaria en un tiempo óptimo?",valor: this.formularioEncuesta.controls['pregunta8'].value})
+    list.push({numberQuestion: "9",question: "¿Le gusta la atención brindada por la empresa?",valor: this.formularioEncuesta.controls['pregunta9'].value})
+    list.push({numberQuestion: "10",question: "¿Recomendarías a la empresa por su calidad de servicio?",valor: this.formularioEncuesta.controls['pregunta10'].value})
+    list.push({numberQuestion: "11",question: "¿Considera a Coroda Automatic Door SAC como una empresa líder dentro del mercado?",valor: this.formularioEncuesta.controls['pregunta11'].value})
+    list.push({numberQuestion: "12",question: "¿Consideras que la empresa posee un crecimiento ascendente?",valor: this.formularioEncuesta.controls['pregunta12'].value})
+    this.checkoutService.createSurvey(list).subscribe(s=>{
+      this.router.navigate(['/']);
+    });
   }
   
   public setStep(index: number) {
