@@ -91,7 +91,7 @@ export class CustomersComponent implements OnInit {
     };
     const dialogRef = this.appService.openDialog(CotizacionUpdateComponent, data, 'theme-dialog');
     dialogRef.afterClosed().subscribe(cus => {  
-     
+      this.ngOnInit();
     });  
   }
 }

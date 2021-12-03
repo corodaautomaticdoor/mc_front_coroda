@@ -24,7 +24,7 @@ export class CotizacionService extends BaseService {
   }
 
   updateCotizacion(request: any): Observable<any> {
-    return this.http.post<ICotizacionResponseModel>(`${OPERATION_URL}` + request.operationId,request).pipe(
+    return this.http.put<ICotizacionResponseModel>(`${OPERATION_URL}update-operation/` + request.operationId,request).pipe(
       map(resp=>{
         return resp;
       })
