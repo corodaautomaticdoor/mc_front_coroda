@@ -8,6 +8,7 @@ const routes: Routes = [
     path: '', 
     component: AppClientComponent, children: [
         { path: '', loadChildren: () => import('./app-client/app-home/app-home.module').then(m => m.AppHomeModule) },
+        { path: 'customers', loadChildren: () => import('./app-client/app-home/app-home.module').then(m => m.AppHomeModule) },
         { path: 'about', loadChildren: () => import('./app-client/about/about.module').then(m => m.AboutModule) },
         { path: 'contact', loadChildren: () => import('./app-client/contact/contact.module').then(m => m.ContactModule) },
         { path: 'menu', loadChildren: () => import('./app-client/menu/menu.module').then(m => m.MenuModule) },
