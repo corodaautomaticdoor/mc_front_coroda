@@ -48,35 +48,28 @@ export class CartComponent implements OnInit {
 
   public onQuantityChange(count:number, menuItem:MenuItem){ 
     menuItem.cartCount = count; 
-    if(menuItem.cartCount <= menuItem.availibilityCount){  
-      let price = 0;
-      if(menuItem.discount){
-        price = menuItem.price - (menuItem.price * (menuItem.discount / 100));
-      }
-      else{
-        price = menuItem.price;
-      } 
-      this.total[menuItem.id] = count * price;
-      this.cartItemCount[menuItem.id] = count;
-      this.appService.calculateCartTotal(); 
-      this.cartItemCountTotal = 0;
-      this.cartItemCount.forEach(value=>{
-        this.cartItemCountTotal +=value;
-      });       
-      this.appService.Data.totalCartCount = this.cartItemCountTotal;
-      this.appService.Data.cartList.forEach(item=>{
-        this.cartItemCount.forEach((value,index)=>{
-          if(item.id == index){
-            item.cartCount = value;
-          }
-        });
-      }); 
+    let price = 0;
+    if(menuItem.discount){
+      price = menuItem.price - (menuItem.price * (menuItem.discount / 100));
     }
     else{
-      menuItem.cartCount = menuItem.availibilityCount;
-      this.snackBar.open('You can not add more items than available. In stock ' + menuItem.availibilityCount + ' items and you already added ' + menuItem.cartCount + ' item to your cart', '×', { panelClass: 'error', verticalPosition: 'top', duration: 5000 });
+      price = menuItem.price;
     } 
-   
+    this.total[menuItem.id] = count * price;
+    this.cartItemCount[menuItem.id] = count;
+    this.appService.calculateCartTotal(); 
+    this.cartItemCountTotal = 0;
+    this.cartItemCount.forEach(value=>{
+      this.cartItemCountTotal +=value;
+    });       
+    this.appService.Data.totalCartCount = this.cartItemCountTotal;
+    this.appService.Data.cartList.forEach(item=>{
+      this.cartItemCount.forEach((value,index)=>{
+        if(item.id == index){
+          item.cartCount = value;
+        }
+      });
+    }); 
   }
 
   cotizar() {

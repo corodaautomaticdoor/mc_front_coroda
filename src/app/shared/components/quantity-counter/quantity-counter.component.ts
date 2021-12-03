@@ -21,6 +21,7 @@ export class QuantityCounterComponent implements OnInit {
   }
 
   public increment(){
+    debugger
     if(this.value < this.max){
       this.value = this.value + this.step; 
       this.onCounterChange.emit(this.value);

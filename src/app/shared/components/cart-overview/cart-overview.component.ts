@@ -47,15 +47,10 @@ export class CartOverviewComponent implements OnInit {
     event.preventDefault();           
   }  
 
-  public counterChange(menuItem:MenuItem, count:number){   
+  public counterChange(menuItem:MenuItem, count:number){
+    debugger
     menuItem.cartCount = count;
-    if(menuItem.cartCount <= menuItem.availibilityCount){ 
-      this.appService.calculateCartTotal();
-    }
-    else{
-      menuItem.cartCount = menuItem.availibilityCount;
-      this.snackBar.open('You can not add more items than available. In stock ' + menuItem.availibilityCount + ' items and you already added ' + menuItem.cartCount + ' item to your cart', '×', { panelClass: 'error', verticalPosition: 'top', duration: 5000 });
-    } 
+    this.appService.calculateCartTotal();
   }
  
 
