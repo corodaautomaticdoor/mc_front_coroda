@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router'; 
 import { AppSettings, Settings } from 'src/app/app.settings';
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   public bgImage:any;
   public settings: Settings;
   constructor(public fb: FormBuilder, public router:Router, private sanitizer:DomSanitizer, public appSettings:AppSettings,
-              public loginService: LoginService) { 
+              public loginService: LoginService, private _snackBar: MatSnackBar) { 
     this.settings = this.appSettings.settings; 
   }
 
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit {
         }
       },
       err=>{
+        this._snackBar.open("Se ingreso incorrecto el usuario o contraseña.");
         this.router.navigate(['/auth']);
       });
     }
