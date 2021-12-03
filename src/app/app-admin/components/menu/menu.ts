@@ -1,7 +1,7 @@
 import { Menu } from './menu.model'; 
 
 export const menuItems = [ 
-    new Menu (10, 'ADMIN_NAV.DASHBOARD', '/admin', null, 'dashboard', null, false, 0),
+    // new Menu (10, 'ADMIN_NAV.DASHBOARD', '/admin', null, 'dashboard', null, false, 0),
     // new Menu (20, 'ADMIN_NAV.MENU_ITEMS', null, null, 'grid_on', null, true, 0),  
     // new Menu (21, 'ADMIN_NAV.CATEGORIES', '/admin/menu-items/categories', null, 'category', null, false, 20), 
     // new Menu (22, 'ADMIN_NAV.MENU_ITEMS_LIST', '/admin/menu-items/list', null, 'list', null, false, 20), 
@@ -13,7 +13,7 @@ export const menuItems = [
     // new Menu (40, 'ADMIN_NAV.USERS', '/admin/users', null, 'group_add', null, false, 0), 
     // new Menu (45, 'ADMIN_NAV.RESERVATIONS', '/admin/reservations', null, 'book_online', null, false, 0),  
     new Menu (50, 'Cotizaciones', '/admin/customers', null, 'supervisor_account', null, false, 0),  
-    // new Menu (60, 'ADMIN_NAV.COUPONS', '/admin/coupons', null, 'card_giftcard', null, false, 0),  
+    new Menu (60, 'Productos', '/admin/coupons', null, 'card_giftcard', null, false, 0),  
     // new Menu (70, 'ADMIN_NAV.WITHDRAWAL', '/admin/withdrawal', null, 'credit_card', null, false, 0), 
     // new Menu (80, 'ADMIN_NAV.ANALYTICS', '/admin/analytics', null, 'multiline_chart', null, false, 0), 
     // new Menu (90, 'ADMIN_NAV.REFUND', '/admin/refund', null, 'restore', null, false, 0),  

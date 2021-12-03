@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator'; 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
@@ -6,14 +6,16 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AppService } from 'src/app/app.service';
 import { CouponDialogComponent } from './coupon-dialog/coupon-dialog.component';
 import { coupons } from './coupons';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-coupons',
   templateUrl: './coupons.component.html',
-  styleUrls: ['./coupons.component.scss']
+  styleUrls: ['./coupons.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CouponsComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'code', 'discountType', 'amount', 'storeId', 'limit.perCoupon', 'expiryDate', 'actions'];
+  displayedColumns: string[] = ['category', 'subCategory', 'model', 'origin', 'material', 'dimensions', 'color', 'priceUnit'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
@@ -27,11 +29,13 @@ export class CouponsComponent implements OnInit {
     { id: 3, name: 'Fixed Product Discount' }
   ];
 
-  constructor(public appService:AppService, public snackBar: MatSnackBar) { }
+  constructor(public appService:AppService, public snackBar: MatSnackBar, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getCategories();
-    this.initDataSource(coupons);  
+    this.productService.getProduct().subscribe(s=> {
+      this.initDataSource(s.reverse());  
+    });
   }
 
   public initDataSource(data:any){
@@ -69,7 +73,7 @@ export class CouponsComponent implements OnInit {
     } 
   }  
 
-  public openCouponDialog(coupon:any){
+  public openproductDialog(coupon:any){
     let data = {
       coupon: coupon,
       stores: this.stores,
@@ -78,23 +82,7 @@ export class CouponsComponent implements OnInit {
     };
     const dialogRef = this.appService.openDialog(CouponDialogComponent, data, 'theme-dialog');
     dialogRef.afterClosed().subscribe(coup => {  
-      if(coup){
-        let message = '';      
-        const index: number = this.dataSource.data.findIndex(x => x.id == coup.id); 
-        if(index !== -1){
-          this.dataSource.data[index] = coup;
-          message = 'Coupon '+coup.title+' updated successfully';
-        } 
-        else{ 
-          let last_coupon = this.dataSource.data[this.dataSource.data.length - 1]; 
-          coup.id = last_coupon.id + 1; 
-          this.dataSource.data.push(coup); 
-          this.paginator.lastPage();
-          message = 'New coupon '+coup.title+' added successfully!'; 
-        }  
-        this.initDataSource(this.dataSource.data); 
-        this.snackBar.open(message, '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });          
-      }
+      this.ngOnInit();
     });  
   }
 
