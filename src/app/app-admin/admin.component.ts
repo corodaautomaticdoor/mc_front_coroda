@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
               private menuService: MenuService){        
     this.settings = this.appSettings.settings;
   }
+  nombreUsuario: string = "";
 
   ngOnInit() {  
     if(window.innerWidth <= 960){ 
@@ -27,6 +28,8 @@ export class AdminComponent implements OnInit {
       this.settings.adminSidenavIsPinned = false;
     };  
     this.menuItems = this.menuService.getMenuItems();    
+    const ls: any = JSON.parse(localStorage.getItem("OAuthToken")!);
+    this.nombreUsuario = ls.name + ' ' + ls.lastName1;
   }
 
   ngAfterViewInit(){  

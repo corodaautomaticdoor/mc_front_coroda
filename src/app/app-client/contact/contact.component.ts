@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppService } from 'src/app/app.service';
 import { AppSettings, Settings } from 'src/app/app.settings';
 import { emailValidator } from 'src/app/theme/utils/app-validators';
+import { AgmCoreModule } from '@agm/core';
 
 @Component({
     selector: 'app-contact',

@@ -11,7 +11,11 @@ export class UserMenuComponent implements OnInit {
   public userImage = 'assets/images/others/admin.jpg';
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  nombreUsuario: string = "";
+
+  ngOnInit() {
+    const ls: any = JSON.parse(localStorage.getItem("OAuthToken")!);
+    this.nombreUsuario = ls.name + ' ' + ls.lastName1;
   }
 
   logout(){
