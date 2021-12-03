@@ -13,9 +13,9 @@ import { AgmCoreModule } from '@agm/core';
 })
 export class ContactComponent implements OnInit {
     public contactForm!: FormGroup;
-    public lat: number = 40.678178;
-    public lng: number = -73.944158;
-    public zoom: number = 12; 
+    public lat: number = -11.9699055;
+    public lng: number = -77.0818863;
+    public zoom: number = 17; 
     public mapStyles:any = [
         {
             "featureType": "all",

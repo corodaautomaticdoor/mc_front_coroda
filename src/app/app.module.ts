@@ -59,7 +59,7 @@ import { AppClientComponent } from './app-client/app-client.component';
     NgProgressModule,
     NgProgressHttpModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I',
+      apiKey: 'AIzaSyAq_uTO-SCIP-ggptcm4VNbfDqHD3USXMY',
       libraries: ["places"]
     }), 
     TranslateModule.forRoot({

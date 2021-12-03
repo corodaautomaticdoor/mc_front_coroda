@@ -14,7 +14,7 @@
                         <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
                             <mat-icon color="primary" class="mat-icon-lg">home</mat-icon>
                             <h3 class="primary-color py-1">DIRECCIONES :</h3>
-                            <span>Av. Miraflores 2301</span>
+                            <span>Av. Rio Marañon Mz 13 Lote 35 </span>
                         </div>
                     </div>
                     <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
@@ -37,12 +37,14 @@
 
                 <div fxLayout="row wrap" class="mt-5">  
                     <div fxFlex="100" fxFlex.gt-sm="50" class="py-3" [ngClass.gt-sm]="(settings.rtl) ? 'pl-5' : 'pr-5'"> 
-                        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true" [fullscreenControl]="true" [styles]="(settings.theme == 'orange-dark') ? mapStyles : null">
-                            <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="false"></agm-marker>
-                        </agm-map>
+                        <div class="contact-map">
+                            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true" [fullscreenControl]="true" [styles]="(settings.theme == 'orange-dark') ? mapStyles : null">
+                                <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="false"></agm-marker>
+                            </agm-map>
+                        </div>  
                     </div> 
                     <div fxFlex="100" fxFlex.gt-sm="50" class="py-3"> 
-                        <img src="assets/images/others/about-1.jpg" alt="about-2" class="mw-100 mb-4">
+                        <img src="assets/images/others/banner_contact.jpeg" alt="about-2" class="mw-100 mb-4">
                         <app-social-icons [iconSize]="'lg'" [iconColor]="'primary'" fxLayout="row" fxLayoutAlign="end center"></app-social-icons> 
                     </div> 
                 </div> 
@@ -51,10 +53,6 @@
     </div> 
 </div>
  
-<!-- <div class="contact-map">
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true" [fullscreenControl]="true" [styles]="(settings.theme == 'orange-dark') ? mapStyles : null">
-        <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="false"></agm-marker>
-    </agm-map>
-</div>   -->
+
 
 <!-- <app-get-app></app-get-app>  -->
