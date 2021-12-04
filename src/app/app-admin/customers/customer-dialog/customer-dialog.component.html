@@ -73,12 +73,6 @@
                       <div fxLayout="row wrap" class="mt-2">
                         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-3">
                             <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Marca</mat-label>
-                                <input matInput [value]="model.product.brand" disabled>
-                            </mat-form-field>
-                        </div>
-                        <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-3">
-                            <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Categoria</mat-label>
                                 <input matInput [value]="model.product.category" disabled>
                             </mat-form-field>
@@ -123,6 +117,12 @@
                             <mat-form-field appearance="outline" class="w-100">
                                 <mat-label>Color</mat-label>
                                 <input matInput [value]="model.newStyleProduct[0].color" disabled>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-3">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label>Precio unitario</mat-label>
+                                <input matInput [value]="model.priceUnit" disabled>
                             </mat-form-field>
                         </div>
                         <div fxFlex="100" fxFlex.gt-sm="33.3" class="px-3">
