@@ -39,17 +39,17 @@
                     <div class="mat-cell"><a [routerLink]="['/menu', item.id]" class="menu-item-name">{{item.name}}</a></div>
                     <div class="mat-cell price">  
                         <span *ngIf="!item.discount" class="primary-color py-3"> 
-                            {{item.price | currency : 'PEN' : 'symbol' : '1.2-2'}}  
+                            {{item.price | currency : 'PEN' : 'symbol' : '1.2-2' : 'es-PE'}}  
                         </span> 
                         <span *ngIf="item.discount" class="py-3">  
-                            <span class="text-muted old-price">{{item.price | currency : 'PEN' : 'symbol' : '1.2-2'}}</span> 
-                            <span class="primary-color mx-2">{{ (item.price - (item.price * (item.discount / 100))) | currency : 'PEN' : 'symbol' : '1.2-2'}}</span>
+                            <span class="text-muted old-price">{{item.price | currency : 'PEN' : 'symbol' : '1.2-2' : 'es-PE'}}</span> 
+                            <span class="primary-color mx-2">{{ (item.price - (item.price * (item.discount / 100))) | currency : 'PEN' : 'symbol' : '1.2-2' : 'es-PE'}}</span>
                         </span>  
                     </div>      
                     <div class="mat-cell quantity">
                         <app-quantity-counter [value]="item.cartCount" [step]="1" [min]="1" [max]="1000" (onCounterChange)="onQuantityChange($event, item)"></app-quantity-counter>
                     </div>
-                    <div class="mat-cell total">{{total[item.id] | currency : 'PEN' : 'symbol' : '1.2-2'}}</div>
+                    <div class="mat-cell total">{{total[item.id] | currency : 'PEN' : 'symbol' : '1.2-2' : 'es-PE'}}</div>
                     <div class="mat-cell actions text-center">
                         <div class="p-1">
                             <button mat-mini-fab color="warn" (click)="remove(item)" matTooltip="Clear">
@@ -70,8 +70,8 @@
                     </div>
                     <div class="mat-cell total">
                         <div fxLayout="column" fxLayoutAlign="center start" class="grand-total">
-                            <span>{{ appService.Data.totalPrice | currency : 'PEN' : 'symbol' : '1.2-2'}}</span>
-                            <span class="primary-color">{{ appService.Data.totalPrice | currency : 'PEN' : 'symbol' : '1.2-2'}}</span>
+                            <span>{{ appService.Data.totalPrice | currency : 'PEN' : 'symbol' : '1.2-2' : 'es-PE'}}</span>
+                            <span class="primary-color">{{ appService.Data.totalPrice | currency : 'PEN' : 'symbol' : '1.2-2' : 'es-PE'}}</span>
                         </div>
                     </div>
                     <div class="mat-cell actions">

@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
-import { DatePipe } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
@@ -39,7 +39,8 @@ import { LockScreenComponent } from './app-client/lock-screen/lock-screen.compon
 import { AppClientComponent } from './app-client/app-client.component';
 import { SesionClientGuard } from './app-auth/shared/guard/sesion.client.guard';
 import { SesionAdminGuard } from './app-auth/shared/guard/sesion.admin.guard';
-
+import localeEsPE from '@angular/common/locales/es-PE';
+registerLocaleData(localeEsPE);
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { SesionAdminGuard } from './app-auth/shared/guard/sesion.admin.guard';
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
     DatePipe,
     { provide: MatPaginatorIntl, useClass: MatPaginatorI18nService },
+    { provide: LOCALE_ID, useValue: "es-PE" },
     SesionClientGuard,
     SesionAdminGuard
   ],
