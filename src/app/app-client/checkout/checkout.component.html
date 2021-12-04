@@ -223,10 +223,10 @@
                         </div>
                         <div fxLayout="column" fxLayoutAlign="end end">
                             <span *ngIf="!menuItem.discount" class="fw-500"> 
-                                {{menuItem.price | currency : 'USD' : 'symbol' : '1.2-2'}}  
+                                {{menuItem.price | currency : 'PEN' : 'symbol' : '1.2-2'}}  
                             </span> 
                             <span *ngIf="menuItem.discount" class="fw-500">  
-                                {{ (menuItem.price - (menuItem.price * (menuItem.discount / 100))) | currency : 'USD' : 'symbol' : '1.2-2'}}
+                                {{ (menuItem.price - (menuItem.price * (menuItem.discount / 100))) | currency : 'PEN' : 'symbol' : '1.2-2'}}
                             </span> 
                             <small class="text-muted ws-nowrap fw-500">Qty: {{menuItem.cartCount}}</small>
                         </div>  

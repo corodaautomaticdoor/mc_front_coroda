@@ -22,7 +22,7 @@
                     <div fxFlex="100" fxFlex.gt-md="25" class="px-3">
                         <mat-form-field appearance="outline" class="w-100">
                             <mat-label>Sub Categoria</mat-label>
-                            <mat-select formControlName="subCategory">
+                            <mat-select formControlName="subCategory" (selectionChange)="selectSubCategory($event.value)">
                                 <mat-option *ngFor="let sc of listSubCategorias" [value]="sc.value">
                                     <span>{{sc.value}}</span>
                                 </mat-option>

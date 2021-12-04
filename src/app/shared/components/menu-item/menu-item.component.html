@@ -65,11 +65,11 @@
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="divider mt-1"> 
 
                     <h2 *ngIf="!menuItem.discount" class="primary-color"> 
-                        {{menuItem.price | currency : 'USD' : 'symbol' : '1.2-2'}}  
+                        {{menuItem.price | currency : 'PEN' : 'symbol' : '1.2-2'}}  
                     </h2> 
                     <h2 *ngIf="menuItem.discount">  
-                        <span class="text-muted old-price">{{menuItem.price | currency : 'USD' : 'symbol' : '1.2-2'}}</span> 
-                        <span class="primary-color mx-2">{{ (menuItem.price - (menuItem.price * (menuItem.discount / 100))) | currency : 'USD' : 'symbol' : '1.2-2'}}</span>
+                        <span class="text-muted old-price">{{menuItem.price | currency : 'PEN' : 'symbol' : '1.2-2'}}</span> 
+                        <span class="primary-color mx-2">{{ (menuItem.price - (menuItem.price * (menuItem.discount / 100))) | currency : 'PEN' : 'symbol' : '1.2-2'}}</span>
                     </h2> 
 
 

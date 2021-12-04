@@ -40,63 +40,78 @@ export class CouponDialogComponent implements OnInit {
   listSubCategoriasData: any[] = [
     {
       value: "Puertas levadizas",
-      category: "Puertas"
+      category: "Puertas",
+      abreviatura: "PTL"
     },
     {
       value: "Puertas seccionales",
-      category: "Puertas"
+      category: "Puertas",
+      abreviatura: "PTS"
     },
     {
       value: "Puertas corredizas",
-      category: "Puertas"
+      category: "Puertas",
+      abreviatura: "PTC"
     },
     {
       value: "Puertas basculares",
-      category: "Puertas"
+      category: "Puertas",
+      abreviatura: "PTB"
     },
     {
       value: "Puertas contrapeso",
-      category: "Puertas"
+      category: "Puertas",
+      abreviatura: "PTCP"
     },
     {
       value: "Importados",
-      category: "Motores"
+      category: "Motores",
+      abreviatura: "MI"
     },
     {
       value: "Nacionales",
-      category: "Motores"
+      category: "Motores",
+      abreviatura: "MN"
     },
     {
       value: "Controles",
-      category: "Controles"
+      category: "Controles",
+      abreviatura: "CO"
     },
     {
       value: "Portones electricos",
-      category: "Portones"
+      category: "Portones",
+      abreviatura: "PTE"
     },
     {
       value: "Portones manuales",
-      category: "Portones"
+      category: "Portones",
+      abreviatura: "PTM"
     },
     {
       value: "Camara de vigilancia",
-      category: "Seguridad"
+      category: "Seguridad",
+      abreviatura: "CV"
     },
     {
       value: "Alarmas",
-      category: "Seguridad"
+      category: "Seguridad",
+      abreviatura: "AL"
     },
     {
       value: "Sensores",
-      category: "Seguridad"
+      category: "Seguridad",
+      abreviatura: "SE"
     },
     {
       value: "Videoporteros",
-      category: "Seguridad"
+      category: "Seguridad",
+      abreviatura: "VP"
     },
     {
       value: "Cercos electricos",
-      category: "Seguridad"
+      category: "Seguridad",
+      abreviatura: "CE"
     }
   ];
   constructor(public dialogRef: MatDialogRef<CouponDialogComponent>,
@@ -120,6 +135,11 @@ export class CouponDialogComponent implements OnInit {
 
   selectCategory(category: any){
     this.listSubCategorias = this.listSubCategoriasData.filter( s => s.category === category);
+  }
+
+  selectSubCategory(subCategory: any) {
+    const value = this.listSubCategoriasData.find( s => s.value === subCategory);
+    this.form.controls['model'].setValue(value.abreviatura);
   }
 
   handleFileInput(image: any) {

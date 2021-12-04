@@ -34,7 +34,7 @@ export class CotizacionUpdateComponent implements OnInit {
 
   public onSubmit(){
     let nuevaLista = [];
-    const list: any = document.getElementsByTagName('form')[1].querySelectorAll('input:enabled');
+    const list: any = document.getElementsByTagName('form')[0].querySelectorAll('input:enabled');
     let details: Detail[] = this.data.customer.detail;
     for(let i = 0; i < details.length; i++) {
       const value = {

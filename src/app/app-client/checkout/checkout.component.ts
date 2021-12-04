@@ -102,7 +102,6 @@ export class CheckoutComponent implements OnInit {
   }  
 
   sendRespuesta() {
-    console.log(this.formularioEncuesta.value);
     var list: ISurvey[] = [];
     list.push({numberQuestion: "1",question: "¿Te gustaría guardar todos tus pedidos en alguna cuenta de la empresa?",valor: this.formularioEncuesta.controls['pregunta1'].value})
     list.push({numberQuestion: "2",question: "¿Te gustan los beneficios que te brinda la cuenta de la empresa?",valor: this.formularioEncuesta.controls['pregunta2'].value})
