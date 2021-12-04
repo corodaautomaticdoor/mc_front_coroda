@@ -15,21 +15,21 @@ export class AuthGuard implements CanActivate {
     switch (state.url) {
       case ROUTE_REGISTER:
         if(authenticate){
-          this.router.navigate(['/client']);
+          this.router.navigate(['/']);
           return false;
         }
         else
           return true;
       case ROUTE_LOGIN:
         if(authenticate){
-          this.router.navigate(['/client']);
+          this.router.navigate(['/']);
           return false;
         }
         else
           return true;
       default:
         if(authenticate)
-          this.router.navigate(['/client']);
+          this.router.navigate(['/']);
         else
           this.router.navigate(['/']);
         return false;

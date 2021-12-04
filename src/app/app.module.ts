@@ -37,6 +37,8 @@ import { VerticalMenuComponent } from './theme/components/menu/vertical-menu/ver
 import { FooterComponent } from './theme/components/footer/footer.component'; 
 import { LockScreenComponent } from './app-client/lock-screen/lock-screen.component';
 import { AppClientComponent } from './app-client/app-client.component';
+import { SesionClientGuard } from './app-auth/shared/guard/sesion.client.guard';
+import { SesionAdminGuard } from './app-auth/shared/guard/sesion.admin.guard';
 
 
 @NgModule({
@@ -77,7 +79,9 @@ import { AppClientComponent } from './app-client/app-client.component';
     { provide: OverlayContainer, useClass: CustomOverlayContainer },
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
     DatePipe,
-    { provide: MatPaginatorIntl, useClass: MatPaginatorI18nService }
+    { provide: MatPaginatorIntl, useClass: MatPaginatorI18nService },
+    SesionClientGuard,
+    SesionAdminGuard
   ],
   bootstrap: [AppComponent]
 })

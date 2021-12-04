@@ -12,7 +12,7 @@
     <div fxFlex="100" class="p-3"> 
         <div fxLayout="column" fxLayoutAlign="start stretch" class="h-100">
             <mat-card-content class="mb-0">
-                <h1 class="title"><a [routerLink]="['/menu', menuItem.id]">{{menuItem.name}}</a></h1>   
+                <h1 class="title"><a [routerLink]="['/menu', menuItem.id]">{{menuItem.subCategoria}} - {{menuItem.modelo}}</a></h1>   
                 <div class="mt-2"> 
                     <p>{{menuItem.description}}</p> 
                 </div>  
@@ -74,7 +74,7 @@
 
 
                     <div class="text-muted">  
-                        <button mat-icon-button [disabled]="onCart()" (click)="goToCotizacion()" matTooltip="Modificar caracteristicas">
+                        <button mat-icon-button (click)="goToCotizacion()" matTooltip="Modificar caracteristicas">
                             <mat-icon>edit</mat-icon>
                         </button>
                         <button mat-icon-button [disabled]="onCart()" (click)="addToCart()" matTooltip="Cotizar">

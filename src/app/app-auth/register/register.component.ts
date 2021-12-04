@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.bgImage = this.sanitizer.bypassSecurityTrustStyle('url(assets/images/others/register.jpg)');
+    this.bgImage = this.sanitizer.bypassSecurityTrustStyle('url(assets/images/others/LogoLargo.jpeg)');
     this.registerForm = this.fb.group({ 
       typeDocument: ['', Validators.required],
       numeroDocumento: ['', Validators.compose([Validators.required, Validators.minLength(6)])],

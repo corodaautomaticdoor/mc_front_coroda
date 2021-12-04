@@ -74,24 +74,30 @@ export class MenuSingleComponent implements OnInit {
   } 
 
   public addToCart(){ 
-    debugger
-    this.menuItem.cartCount = this.quantityCount;
-    // if(this.menuItem.cartCount <= this.menuItem.availibilityCount){
-    const index: number = this.appService.Data.cartList.findIndex(item => item.id == this.menuItem.id); 
+    const index: number = 
+      this.appService.Data.cartList.findIndex(item => item.id == this.menuItem.id && 
+                                                      item.nuevasDescripciones == this.formulario.controls['nuevaDescripcion'].value &&
+                                                      item.nuevoColor == this.formulario.controls['nuevoColor'].value); 
     if(this.buttonEdit){
-      this.menuItem.nuevoColor = this.formulario.controls['nuevoColor'].value;
-      this.menuItem.nuevasDescripciones = this.formulario.controls['nuevaDescripcion'].value;
     } else {
-      this.menuItem.nuevoColor = '';
-      this.menuItem.nuevasDescripciones = '';
+      this.formulario.controls['nuevoColor'].setValue('');
+      this.formulario.controls['nuevaDescripcion'].setValue('');
     }
-    (index !== -1) ? this.appService.Data.cartList[index] = this.menuItem : this.appService.addToCart(this.menuItem, null); 
-    this.appService.calculateCartTotal();
-    // }
-    // else{
-    //   this.menuItem.cartCount = this.menuItem.availibilityCount;
-    //   this.snackBar.open('You can not add more items than available. In stock ' + this.menuItem.availibilityCount + ' items and you already added ' + this.menuItem.cartCount + ' item to your cart', '×', { panelClass: 'error', verticalPosition: 'top', duration: 5000 });
-    // }
+    if(index !== -1){
+      debugger
+      this.appService.Data.cartList[index] = this.menuItem;
+      this.appService.Data.cartList[index].cartCount = this.quantityCount;
+      this.appService.calculateCartTotal();
+      this.snackBar.open('Se actualizo el producto "' + this.appService.Data.cartList[index].name + '" en tu cotizacion', '×', {
+        verticalPosition: 'top',
+        duration: 3000,
+        direction: (this.appSettings.settings.rtl) ? 'rtl':'ltr',
+        panelClass: ['success'] 
+      });
+      // this.appService.openCartView(null);
+    } else {
+      this.appService.addToCart(this.menuItem, null, this.formulario.controls['nuevoColor'].value, this.formulario.controls['nuevaDescripcion'].value, this.quantityCount);
+    }
   }
 
 

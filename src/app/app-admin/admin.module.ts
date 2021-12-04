@@ -14,6 +14,7 @@ export const routes = [
     path: '', 
     component: AdminComponent, children: [
       { path: '', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule), data: { breadcrumb: 'Cotizaciones' } },
+      { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule), data: { breadcrumb: 'Cotizaciones' } },
       { path: 'menu-items', loadChildren: () => import('./menu-items/menu-items.module').then(m => m.MenuItemsModule) },
       { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule) },
       { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule), data: { breadcrumb: 'Users' } },

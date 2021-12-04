@@ -17,7 +17,7 @@
         <mat-icon class="mat-icon-lg">menu</mat-icon>
       </button> 
     </span>
-    <img src="assets/images/others/logo_blanco.png" class="img-logo"/>
+    <img src="assets/images/others/LogoLargo.jpeg" class="img-logo"/>
     <a class="logo" routerLink="/" ></a> 
     <div fxShow="false" fxShow.gt-sm class="horizontal-menu">            
         <app-horizontal-menu [menuParentId]="0"></app-horizontal-menu>
@@ -43,6 +43,10 @@
                     </div>
                     <div class="divider"></div>
                     <div class="divider"></div>
+                    <a mat-menu-item href="/admin" *ngIf="isAdmin"> 
+                      <mat-icon class="mat-icon-sm">admin_panel_settings</mat-icon>
+                      <span>Vista administrativa</span> 
+                    </a>
                     <a mat-menu-item (click)="logout()"> 
                         <mat-icon class="mat-icon-sm">power_settings_new</mat-icon>
                         <span>Salir de sesion</span> 

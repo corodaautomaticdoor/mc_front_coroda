@@ -53,6 +53,15 @@ export class MenuItemComponent implements OnInit {
   }
   
   public onCart(){
+    if(this.appService.Data.cartList.find(item=>item.id == this.menuItem.id && 
+                                              ( item.nuevoColor == null || item.nuevoColor == "") &&
+                                              ( item.nuevasDescripciones == null || item.nuevasDescripciones == ""))){
+      return true;
+    }
+    return false;
+  }
+
+  public onNewStyle(){
     if(this.appService.Data.cartList.find(item=>item.id == this.menuItem.id)){
       return true;
     }

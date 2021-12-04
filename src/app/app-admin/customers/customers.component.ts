@@ -30,7 +30,7 @@ export class CustomersComponent implements OnInit {
   ngOnInit(): void { 
     this.countries = this.appService.getCountries();
     this.cotizacionService.getCotizaciones().subscribe(s=>{
-      this.initDataSource(s); 
+      this.initDataSource(s.reverse()); 
     });
   }
 

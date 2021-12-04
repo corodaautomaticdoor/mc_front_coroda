@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AppService } from 'src/app/app.service';
 import { emailValidator, maxWordsValidator } from 'src/app/theme/utils/app-validators';
+import { ModalSendComponent } from './modal-send/modal-send.component';
 import { ISurvey } from './model/checkout.request.model';
 import { CheckoutService } from './services/checkout.service';
 
@@ -116,7 +117,10 @@ export class CheckoutComponent implements OnInit {
     list.push({numberQuestion: "11",question: "¿Considera a Coroda Automatic Door SAC como una empresa líder dentro del mercado?",valor: this.formularioEncuesta.controls['pregunta11'].value})
     list.push({numberQuestion: "12",question: "¿Consideras que la empresa posee un crecimiento ascendente?",valor: this.formularioEncuesta.controls['pregunta12'].value})
     this.checkoutService.createSurvey(list).subscribe(s=>{
-      this.router.navigate(['/']);
+      const dialogRef = this.appService.openDialog(ModalSendComponent, '', 'theme-dialog');
+      dialogRef.afterClosed().subscribe(cus => {  
+        this.router.navigate(['/']);
+      }); 
     });
   }
   
@@ -151,5 +155,4 @@ export class CheckoutComponent implements OnInit {
       this.appService.Data.totalCartCount = 0;
     }   
   }
-
 }

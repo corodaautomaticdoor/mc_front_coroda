@@ -15,8 +15,8 @@ export class CotizacionService extends BaseService {
     super();
   }
 
-  getCotizaciones(): Observable<ICotizacionResponseModel> {
-    return this.http.get<ICotizacionResponseModel>(`${OPERATION_URL}`).pipe(
+  getCotizaciones(): Observable<ICotizacionResponseModel[]> {
+    return this.http.get<ICotizacionResponseModel[]>(`${OPERATION_URL}`).pipe(
       map(resp=>{
         return resp;
       })

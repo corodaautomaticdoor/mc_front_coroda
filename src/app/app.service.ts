@@ -15,7 +15,7 @@ import { ConfirmDialogComponent, ConfirmDialogModel } from './shared/components/
 
 export class Data {
   constructor(public categories: Category[], 
-              public cartList: MenuItem[],
+              public cartList: any[],
               public orderList: Order[],
               public favorites: MenuItem[], 
               public totalPrice: number,
@@ -86,23 +86,62 @@ export class AppService {
     return guid;
   }
 
-  public addToCart(menuItem:MenuItem, component:any){   
+  public openCartView(component: any){
+    this.openCart(component);   
+  }
+
+  public addToCart(menuItem:MenuItem, component:any, nuevoColor?: string, nuevaDescripcion?: string, quantityCount?: number){
     if(!this.Data.cartList.find(item=>item.id == menuItem.id)){
       menuItem.cartCount = (menuItem.cartCount) ? menuItem.cartCount : 1;
-      this.Data.cartList.push(menuItem); 
+      menuItem.nuevoColor = nuevoColor;
+      menuItem.nuevasDescripciones = nuevaDescripcion;
+      let nuevoElemento = {};
+      Object.assign(nuevoElemento, menuItem)
+      this.Data.cartList.push(nuevoElemento); 
       this.calculateCartTotal(); 
       if(component){
         this.openCart(component);        
       }
       else{ 
-        this.snackBar.open('The menu item "' + menuItem.name + '" has been added to cart.', '×', {
+        this.snackBar.open('Se agrego el producto "' + menuItem.name + '" a tu cotizacion.', '×', {
           verticalPosition: 'top',
           duration: 3000,
           direction: (this.appSettings.settings.rtl) ? 'rtl':'ltr',
           panelClass: ['success'] 
         });
       }
-    }  
+    } else {
+      var itemCart = this.Data.cartList.filter(item => item.id == menuItem.id && 
+        item.nuevasDescripciones == nuevaDescripcion &&
+        item.nuevoColor == nuevoColor); 
+      if(itemCart.length>0){
+        this.snackBar.open('Se actualizo el producto "' + menuItem.name + '" en tu cotizacion', '×', {
+          verticalPosition: 'top',
+          duration: 3000,
+          direction: (this.appSettings.settings.rtl) ? 'rtl':'ltr',
+          panelClass: ['success'] 
+        });
+      } else {
+        menuItem.cartCount = (quantityCount) ? quantityCount : 1;
+        menuItem.nuevoColor = nuevoColor;
+        menuItem.nuevasDescripciones = nuevaDescripcion;
+        let nuevoElemento = {};
+        Object.assign(nuevoElemento, menuItem)
+        this.Data.cartList.push(nuevoElemento); 
+        this.calculateCartTotal(); 
+        if(component){
+          this.openCart(component);        
+        }
+        else{ 
+          this.snackBar.open('Se agrego el producto"' + menuItem.name + '" a tu cotizacion.', '×', {
+            verticalPosition: 'top',
+            duration: 3000,
+            direction: (this.appSettings.settings.rtl) ? 'rtl':'ltr',
+            panelClass: ['success'] 
+          });
+        }
+      }
+    }
   } 
 
   public openCart(component:any){  

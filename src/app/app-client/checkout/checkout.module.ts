@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { CheckoutComponent } from './checkout.component';
 import { CheckoutService } from './services/checkout.service';
+import { ModalSendComponent } from './modal-send/modal-send.component';
 
 export const routes = [
   { path: '', component: CheckoutComponent, pathMatch: 'full' }
@@ -16,7 +17,8 @@ export const routes = [
     SharedModule
   ],
   declarations: [
-    CheckoutComponent
+    CheckoutComponent,
+    ModalSendComponent
   ],
   providers: [CheckoutService]
 })

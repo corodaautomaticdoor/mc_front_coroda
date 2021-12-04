@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         }
       },
       err=>{
-        this._snackBar.open("Se ingreso incorrecto el usuario o contraseña.");
+        this._snackBar.open("Usuario y/o contraseña invalidalido.");
         this.router.navigate(['/auth']);
       });
     }

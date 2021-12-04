@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router'; 
+import { SesionAdminGuard } from './app-auth/shared/guard/sesion.admin.guard';
+import { SesionClientGuard } from './app-auth/shared/guard/sesion.client.guard';
 import { AppClientComponent } from './app-client/app-client.component';
 import { NotFoundComponent } from './app-client/not-found/not-found.component';
 

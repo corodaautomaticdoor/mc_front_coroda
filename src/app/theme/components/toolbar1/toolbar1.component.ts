@@ -16,10 +16,12 @@ export class Toolbar1Component implements OnInit {
 
   isLogging: boolean = getToken() != null;
   nombreUsuario: string = "";
+  isAdmin: boolean = false;
 
   ngOnInit() {
     const ls: any = JSON.parse(localStorage.getItem("OAuthToken")!);
     this.nombreUsuario = ls.name + ' ' + ls.lastName1;
+    this.isAdmin = ls.rol == "Admin" ? true : false;
   }
 
   public sidenavToggle(){
